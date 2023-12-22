@@ -1,8 +1,7 @@
 import terser from "@rollup/plugin-terser";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import { defineConfig } from "vite";
-import { chunkSplitPlugin } from "vite-plugin-chunk-split";
+import { defineConfig, splitVendorChunkPlugin } from "vite";
 import { compression as viteCompression } from "vite-plugin-compression2";
 import svgr from "vite-plugin-svgr";
 
@@ -13,47 +12,55 @@ export default defineConfig({
       "@components": path.resolve(__dirname, "./src/components"),
       "@store": path.resolve(__dirname, "./src/store"),
       "@lib": path.resolve(__dirname, "./src/lib"),
-      "@style": path.resolve(__dirname, "./src/style"),
+      "@style": path.resolve(__dirname, "./src/styles"),
       "@icons": path.resolve(__dirname, "./src/assets"),
     },
   },
   server: {
-    port: 1111,
+    port: 2222,
   },
   preview: {
-    port: 1111,
+    port: 2222,
   },
   plugins: [
     svgr(),
     react(),
     terser(),
-    chunkSplitPlugin({
-      strategy: "unbundle",
-      customSplitting: {
-        components: [/src\/components/],
-        icons: [/src\/icons/],
-        types: [/src\/types/],
-        lib: [/src\/lib/],
-      },
-    }),
+    splitVendorChunkPlugin(),
     viteCompression({
       algorithm: "brotliCompress",
       exclude: [/\.(br)$/, /\.(gz)$/],
     }),
   ],
   build: {
+    chunkSizeWarningLimit: 550,
     minify: "terser",
     sourcemap: false,
     cssCodeSplit: true,
     emptyOutDir: true,
     rollupOptions: {
-      external: [],
       output: {
-        manualChunks: undefined,
+        manualChunks(id: string) {
+          if (id.includes("clsx")) {
+            return "@clsx";
+          }
+          if (id.includes("resize-observer-polyfill")) {
+            return "@resize-observer-polyfill";
+          }
+          if (id.includes("styled-components")) {
+            return "@styled-components";
+          }
+          if (
+            id.includes("react-router-dom") ||
+            id.includes("@remix-run") ||
+            id.includes("react-router")
+          ) {
+            return "@react-router";
+          }
+        },
         globals: {
           react: "React",
           "react-dom": "ReactDOM",
-          "react-konva": "ReactKonva",
         },
       },
     },
