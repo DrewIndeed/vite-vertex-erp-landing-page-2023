@@ -50,6 +50,15 @@ export default defineConfig({
           if (id.includes("styled-components")) {
             return "@styled-components";
           }
+          if (id.includes("tailwindcss")) {
+            return "@tailwindcss";
+          }
+          if (id.includes("postcss")) {
+            return "@postcss";
+          }
+          if (id.includes("preline")) {
+            return "@preline";
+          }
           if (
             id.includes("react-router-dom") ||
             id.includes("@remix-run") ||

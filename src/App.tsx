@@ -3,10 +3,7 @@ import "./App.css";
 
 function App() {
   return (
-    <main>
-      <h1 className="text-3xl text-pink-400 font-bold underline">
-        Hello world!
-      </h1>
+    <main className="dark:bg-[#0e162a] h-screen">
       {/* navbar */}
       {/* hero */}
       <Hero />

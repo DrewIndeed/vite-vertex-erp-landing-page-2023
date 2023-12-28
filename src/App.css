@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.with-base-gradient {
+  @apply bg-gradient-to-tl from-blue-600 to-violet-600;
+}
