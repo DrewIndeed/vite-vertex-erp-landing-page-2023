@@ -1,5 +1,5 @@
 .wrapper {
-  @apply relative overflow-hidden h-auto lg:h-screen
+  @apply relative overflow-hidden h-auto
     before:absolute before:top-0 before:start-1/2
     before:-z-[1] before:transform before:-translate-x-1/2
     before:bg-no-repeat before:bg-top
