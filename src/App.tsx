@@ -6,7 +6,10 @@ import Features from "@components/sections/Features";
 
 import Testinomials from "@components/sections/Testinomials";
 
+import Pricing from "@components/sections/Pricing";
+
 import Footer from "@components/sections/Footer";
+
 import "./App.css";
 
 function App() {
@@ -18,9 +21,11 @@ function App() {
       <Divider />
       {/* features */}
       <Features />
-      {/* pricing and plans */}
       {/* testinomials */}
       <Testinomials />
+      {/* pricing and plans */}
+      <Pricing />
+      <Divider />
       {/* footer */}
       <Footer />
     </main>
