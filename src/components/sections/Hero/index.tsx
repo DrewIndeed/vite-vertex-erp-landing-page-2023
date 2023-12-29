@@ -4,7 +4,7 @@ import "./style.css";
 const Hero = () => {
   return (
     <section className="wrapper">
-      <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-[18dvh] pb-10">
+      <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-[20dvh] mb-10 sm:mb-20">
         {/* waitlist button */}
         <div className="flex justify-center">
           <a className="pro-release-wrapper" href="">

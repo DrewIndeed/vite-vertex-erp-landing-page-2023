@@ -2,7 +2,7 @@ import { FEATURES } from "./constant";
 
 const Features = () => {
   return (
-    <section className="mt-0 md:mt-20">
+    <section className="my-5 md:my-12">
       {/* features title and subtitle */}
       <div className="max-w-2xl mx-auto text-center mb-8 lg:mb-10 px-4">
         <h2 className="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">
