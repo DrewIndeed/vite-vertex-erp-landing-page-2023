@@ -35,7 +35,7 @@ const Hero = () => {
           </p>
         </div>
         {/* get started */}
-        <div className="mt-8 gap-3 flex justify-center flex-col sm:flex-row">
+        <div className="mt-8 gap-3 flex justify-center flex-col-reverse sm:flex-row">
           <a className="get-started-btn with-base-gradient" href="">
             Get started
             <Icons.GetStartedChevronRight />
