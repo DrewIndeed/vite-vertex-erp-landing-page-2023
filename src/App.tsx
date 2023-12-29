@@ -4,7 +4,7 @@ import Hero from "@components/sections/Hero";
 
 import Features from "@components/sections/Features";
 
-import Testinomials from "@components/sections/Testinomials";
+import Testimonials from "@components/sections/Testimonials";
 
 import Pricing from "@components/sections/Pricing";
 
@@ -22,7 +22,7 @@ function App() {
       {/* features */}
       <Features />
       {/* testinomials */}
-      <Testinomials />
+      <Testimonials />
       {/* pricing and plans */}
       <Pricing />
       <Divider />

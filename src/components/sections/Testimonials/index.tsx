@@ -1,7 +1,7 @@
 import { TESTIMONIALS } from "./constant";
 import Icons from "./icons";
 
-const Testinomials = () => {
+const Testimonials = () => {
   return (
     <div className="overflow-hidden bg-gradient-to-tl from-blue-600/50 to-violet-600/50 dark:from-blue-600/50 dark:to-violet-600/50">
       <div className="relative max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
@@ -97,4 +97,4 @@ const Testinomials = () => {
   );
 };
 
-export default Testinomials;
+export default Testimonials;
