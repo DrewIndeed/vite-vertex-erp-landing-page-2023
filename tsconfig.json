@@ -13,8 +13,9 @@
       "@components/*": ["./components/*"],
       "@store/*": ["./store/*"],
       "@lib/*": ["./lib/*"],
+      "@utils/*": ["./utils/*"],
       "@style/*": ["./styles/*"],
-      "@icons/*": ["./assets/*"]
+      "@icons/*": ["./assets/*"],
     },
 
     /* Bundler mode */

@@ -1,7 +1,9 @@
+import { rootStore } from "@store/index";
 import Icons from "./icons";
 import "./style.css";
 
 const Hero = () => {
+  const toggleStarted = rootStore(({ toggleStarted }) => toggleStarted);
   return (
     <section className="wrapper">
       <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-[20dvh] mb-10 sm:mb-20">
@@ -36,7 +38,14 @@ const Hero = () => {
         </div>
         {/* get started */}
         <div className="mt-8 gap-3 flex justify-center flex-col-reverse sm:flex-row">
-          <a className="get-started-btn with-base-gradient" href="">
+          <a
+            className="get-started-btn with-base-gradient"
+            href=""
+            onClick={(e) => {
+              e.preventDefault();
+              toggleStarted();
+            }}
+          >
             Get started
             <Icons.GetStartedChevronRight />
           </a>

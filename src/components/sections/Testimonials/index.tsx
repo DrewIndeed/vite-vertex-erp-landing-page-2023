@@ -14,7 +14,7 @@ const Testimonials = () => {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {TESTIMONIALS.map((testi) => {
             return (
-              <div className="flex h-auto">
+              <div key={testi.name} className="flex h-auto">
                 <div className="flex flex-col bg-white rounded-xl dark:bg-slate-900">
                   <div className="flex-auto p-4 md:p-6">
                     <p className="text-base italic md:text-lg text-gray-800 dark:text-gray-200">

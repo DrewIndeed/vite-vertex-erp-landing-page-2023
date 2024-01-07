@@ -12,6 +12,7 @@ export default defineConfig({
       "@components": path.resolve(__dirname, "./src/components"),
       "@store": path.resolve(__dirname, "./src/store"),
       "@lib": path.resolve(__dirname, "./src/lib"),
+      "@utils": path.resolve(__dirname, "./src/utils"),
       "@style": path.resolve(__dirname, "./src/styles"),
       "@icons": path.resolve(__dirname, "./src/assets"),
     },
@@ -58,6 +59,9 @@ export default defineConfig({
           }
           if (id.includes("preline")) {
             return "@preline";
+          }
+          if (id.includes("zustand")) {
+            return "@zustand";
           }
           if (
             id.includes("react-router-dom") ||

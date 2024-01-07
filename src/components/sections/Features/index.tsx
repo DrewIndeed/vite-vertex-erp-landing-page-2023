@@ -13,7 +13,7 @@ const Features = () => {
         </p>
       </div>
       {/* features show case boxes */}
-      <div className="w-screen flex justify-center">
+      <div className="w-full flex justify-center">
         <div
           className="rounded-md md:rounded-xl mx-4 mb-5 flex-1 max-w-[85rem]
         bg-gradient-to-tl from-blue-600/50 to-violet-600/50 dark:from-blue-600/50 dark:to-violet-600/50 p-0 md:p-[2px]"
@@ -22,7 +22,7 @@ const Features = () => {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 items-center gap-8 md:gap-10 bg-white/90 dark:bg-[#03020395] backdrop-blur-sm p-5 md:p-10 rounded-md md:rounded-xl">
             {FEATURES.map((feat) => {
               return (
-                <div>
+                <div key={feat.title}>
                   <div className="relative flex justify-center items-center w-12 h-12 bg-white rounded-xl before:absolute before:-inset-px before:-z-[1] before:bg-gradient-to-br before:from-blue-600 before:via-transparent before:to-violet-600 before:rounded-xl dark:bg-slate-900">
                     {feat.icon}
                   </div>
