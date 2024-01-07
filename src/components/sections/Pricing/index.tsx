@@ -1,3 +1,5 @@
+import { rootStore } from "@store/index";
+
 const TickMark = () => (
   <svg
     className="flex-shrink-0 mt-0.5 h-4 w-4 text-violet-600/60 dark:text-violet-500/60"
@@ -16,6 +18,7 @@ const TickMark = () => (
 );
 
 const Pricing = () => {
+  const toggleStarted = rootStore(({ toggleStarted }) => toggleStarted);
   return (
     <div className="max-w-[42rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
       <div className="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
@@ -64,7 +67,11 @@ const Pricing = () => {
             disabled:opacity-50 disabled:pointer-events-none 
             dark:hover:bg-violet-900/60 dark:text-violet-400/60 
             dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-            href="#"
+            href=""
+            onClick={(e) => {
+              e.preventDefault();
+              toggleStarted();
+            }}
           >
             Sign up
           </a>
@@ -150,7 +157,11 @@ const Pricing = () => {
           <a
             className="mt-5 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold 
             rounded-lg border border-transparent bg-violet-600/60 text-white hover:bg-violet-700/60 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-            href="https://github.com/htmlstreamofficial/preline/tree/main/examples/html"
+            href=""
+            onClick={(e) => {
+              e.preventDefault();
+              toggleStarted();
+            }}
           >
             Sign up
           </a>

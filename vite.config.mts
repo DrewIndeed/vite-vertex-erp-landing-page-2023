@@ -59,6 +59,9 @@ export default defineConfig({
           if (id.includes("preline")) {
             return "@preline";
           }
+          if (id.includes("zustand")) {
+            return "@zustand";
+          }
           if (
             id.includes("react-router-dom") ||
             id.includes("@remix-run") ||
