@@ -1,8 +1,31 @@
+import { useForm } from "react-hook-form";
+import { EMAIL_PATTERN } from "../../../../constants/index";
+import { useEffect } from "react";
+
 type Props = {
   toggleSignUp: () => void;
 };
 
 const SignInForm = ({ toggleSignUp }: Props) => {
+  const {
+    register,
+    handleSubmit,
+    // watch,
+    // control,
+    formState: { errors: formErrors },
+    // clearErrors,
+  } = useForm({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+    // mode: "onChange",
+  });
+
+  const onSubmit = (data: Record<string, string>) => {
+    console.log(data);
+  };
+
   return (
     <div
       className="w-full mx-4 lg:mx-0 md:max-w-[450px] mt-7 bg-white border border-gray-200 rounded-xl shadow-sm 
@@ -14,7 +37,7 @@ const SignInForm = ({ toggleSignUp }: Props) => {
         </h1>
 
         <div className="mt-5">
-          <form className="w-full">
+          <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
             <div className="grid gap-y-4">
               <div>
                 <label
@@ -27,22 +50,29 @@ const SignInForm = ({ toggleSignUp }: Props) => {
                   <input
                     type="email"
                     id="email"
-                    name="email"
+                    // name="email"
                     className="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm 
                     focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 
                     disabled:pointer-events-none dark:bg-slate-900 
                     dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                    required
+                    // required
                     placeholder="Enter your lovely email"
                     aria-describedby="email-error"
+                    {...register("email", {
+                      required: "Email is required",
+                      pattern: {
+                        value: EMAIL_PATTERN,
+                        message: "Email has invalid format",
+                      },
+                    })}
+                    aria-invalid={formErrors.email ? "true" : "false"}
                   />
                 </div>
-                {/* <p
-                  className="hidden text-xs text-red-600 mt-2"
-                  id="username-error"
-                >
-                  Please include a valid email address so we can get back to you
-                </p> */}
+                {formErrors.email && (
+                  <p className="text-xs text-red-600 mt-2" id="email-error">
+                    {formErrors.email?.message}
+                  </p>
+                )}
               </div>
 
               <div>
@@ -58,22 +88,29 @@ const SignInForm = ({ toggleSignUp }: Props) => {
                   <input
                     type="password"
                     id="password"
-                    name="password"
+                    // name="password"
                     className="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm 
                     focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 
                     disabled:pointer-events-none dark:bg-slate-900 
                     dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                    required
+                    // required
                     placeholder="Enter your password"
                     aria-describedby="password-error"
+                    {...register("password", {
+                      required: "Password is required",
+                      minLength: {
+                        value: 8,
+                        message: "Password must have at least 8 characters",
+                      },
+                    })}
+                    aria-invalid={formErrors.password ? "true" : "false"}
                   />
                 </div>
-                {/* <p
-                  className="hidden text-xs text-red-600 mt-2"
-                  id="password-error"
-                >
-                  8+ characters required
-                </p> */}
+                {formErrors.password && (
+                  <p className="text-xs text-red-600 mt-2" id="password-error">
+                    {formErrors.password?.message}
+                  </p>
+                )}
               </div>
 
               <button
