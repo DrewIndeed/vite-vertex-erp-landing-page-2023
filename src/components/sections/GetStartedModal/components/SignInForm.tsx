@@ -5,7 +5,7 @@ type Props = {
 const SignInForm = ({ toggleSignUp }: Props) => {
   return (
     <div
-      className="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm 
+      className="w-full mx-4 lg:mx-0 md:max-w-[450px] mt-7 bg-white border border-gray-200 rounded-xl shadow-sm 
     dark:bg-gray-800 dark:border-gray-700"
     >
       <div className="p-4 sm:p-7">
@@ -14,27 +14,27 @@ const SignInForm = ({ toggleSignUp }: Props) => {
         </h1>
 
         <div className="mt-5">
-          <form className="w-[450px]">
+          <form className="w-full">
             <div className="grid gap-y-4">
               <div>
                 <label
-                  htmlFor="username"
+                  htmlFor="email"
                   className="block text-sm mb-2 dark:text-white"
                 >
                   Username <span className="text-red-400">*</span>
                 </label>
                 <div className="relative">
                   <input
-                    type="text"
-                    id="username"
-                    name="username"
+                    type="email"
+                    id="email"
+                    name="email"
                     className="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm 
                     focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 
                     disabled:pointer-events-none dark:bg-slate-900 
                     dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
                     required
-                    placeholder="Enter your lovely username"
-                    aria-describedby="username-error"
+                    placeholder="Enter your lovely email"
+                    aria-describedby="email-error"
                   />
                 </div>
                 {/* <p
