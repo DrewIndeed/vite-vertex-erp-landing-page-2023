@@ -14,7 +14,7 @@ import "./App.css";
 
 function App() {
   return (
-    <main className="dark:bg-[#020303]">
+    <main className="dark:bg-[#020303] relative max-w-[110rem] mx-auto">
       {/* navbar */}
       {/* hero */}
       <Hero />

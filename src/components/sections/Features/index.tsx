@@ -13,7 +13,7 @@ const Features = () => {
         </p>
       </div>
       {/* features show case boxes */}
-      <div className="w-screen flex justify-center">
+      <div className="w-full flex justify-center">
         <div
           className="rounded-md md:rounded-xl mx-4 mb-5 flex-1 max-w-[85rem]
         bg-gradient-to-tl from-blue-600/50 to-violet-600/50 dark:from-blue-600/50 dark:to-violet-600/50 p-0 md:p-[2px]"
