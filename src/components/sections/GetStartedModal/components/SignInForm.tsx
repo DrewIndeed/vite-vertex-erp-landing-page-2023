@@ -1,6 +1,5 @@
+import { EMAIL_PATTERN } from "@constants/index";
 import { useForm } from "react-hook-form";
-import { EMAIL_PATTERN } from "../../../../constants/index";
-import { useEffect } from "react";
 
 type Props = {
   toggleSignUp: () => void;
