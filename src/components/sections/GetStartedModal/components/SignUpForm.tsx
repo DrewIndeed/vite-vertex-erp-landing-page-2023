@@ -5,7 +5,7 @@ type Props = {
 const SignUpForm = ({ toggleSignUp }: Props) => {
   return (
     <div
-      className="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm 
+      className="mt-7 w-full mx-4 lg:mx-0 md:max-w-[450px] bg-white border border-gray-200 rounded-xl shadow-sm 
       dark:bg-gray-800 dark:border-gray-700"
     >
       <div className="p-4 sm:p-7">
@@ -14,7 +14,7 @@ const SignUpForm = ({ toggleSignUp }: Props) => {
         </h1>
 
         <div className="mt-5">
-          <form className="w-[450px]">
+          <form className="w-full">
             <div className="grid gap-y-4">
               <div>
                 <label
