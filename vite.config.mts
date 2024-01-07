@@ -70,6 +70,12 @@ export default defineConfig({
           if (id.includes("react-hook-form")) {
             return "@react-hook-form";
           }
+          if (id.includes("axios")) {
+            return "@axios";
+          }
+          if (id.includes("swr")) {
+            return "@swr";
+          }
           if (
             id.includes("react-router-dom") ||
             id.includes("@remix-run") ||
