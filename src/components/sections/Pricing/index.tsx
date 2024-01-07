@@ -1,6 +1,6 @@
 const TickMark = () => (
   <svg
-    className="flex-shrink-0 mt-0.5 h-4 w-4 text-violet-600 dark:text-violet-500"
+    className="flex-shrink-0 mt-0.5 h-4 w-4 text-violet-600/60 dark:text-violet-500/60"
     xmlns="http://www.w3.org/2000/svg"
     width="24"
     height="24"
@@ -60,9 +60,9 @@ const Pricing = () => {
 
           <a
             className="mt-5 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg 
-            border border-transparent bg-violet-100 text-violet-800 hover:bg-violet-200 
+            border border-transparent bg-violet-100/60 text-violet-800/60 hover:bg-violet-200/60 
             disabled:opacity-50 disabled:pointer-events-none 
-            dark:hover:bg-violet-900 dark:text-violet-400 
+            dark:hover:bg-violet-900/60 dark:text-violet-400/60 
             dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
             href="#"
           >
@@ -70,9 +70,9 @@ const Pricing = () => {
           </a>
         </div>
 
-        <div className="flex flex-col border-2 border-violet-600 text-center shadow-xl rounded-xl p-8 dark:border-violet-700">
+        <div className="flex flex-col border-2 border-violet-600/60 text-center shadow-xl rounded-xl p-8 dark:border-violet-700/60">
           <p className="mb-3">
-            <span className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-lg text-xs uppercase font-semibold bg-violet-100 text-violet-800 dark:bg-violet-600 dark:text-white">
+            <span className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-lg text-xs uppercase font-semibold bg-violet-100/60 text-violet-800/60 dark:bg-violet-600/60 dark:text-white">
               Most popular
             </span>
           </p>
@@ -90,7 +90,7 @@ const Pricing = () => {
           <ul className="mt-7 space-y-2.5 text-sm">
             <li className="flex space-x-2">
               <svg
-                className="flex-shrink-0 mt-0.5 h-4 w-4 text-violet-600 dark:text-violet-500"
+                className="flex-shrink-0 mt-0.5 h-4 w-4 text-violet-600/60 dark:text-violet-500/60"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -108,7 +108,7 @@ const Pricing = () => {
 
             <li className="flex space-x-2">
               <svg
-                className="flex-shrink-0 mt-0.5 h-4 w-4 text-violet-600 dark:text-violet-500"
+                className="flex-shrink-0 mt-0.5 h-4 w-4 text-violet-600/60 dark:text-violet-500/60"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -128,7 +128,7 @@ const Pricing = () => {
 
             <li className="flex space-x-2">
               <svg
-                className="flex-shrink-0 mt-0.5 h-4 w-4 text-violet-600 dark:text-violet-500"
+                className="flex-shrink-0 mt-0.5 h-4 w-4 text-violet-600/60 dark:text-violet-500/60"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -149,7 +149,7 @@ const Pricing = () => {
 
           <a
             className="mt-5 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold 
-            rounded-lg border border-transparent bg-violet-600 text-white hover:bg-violet-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+            rounded-lg border border-transparent bg-violet-600/60 text-white hover:bg-violet-700/60 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
             href="https://github.com/htmlstreamofficial/preline/tree/main/examples/html"
           >
             Sign up

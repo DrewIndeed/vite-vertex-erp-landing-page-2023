@@ -9,7 +9,7 @@ const Fotter = () => {
         <div className="col-span-full hidden lg:col-span-1 lg:block">
           <a
             aria-label="Brand"
-            className="flex-none text-xl font-semibold dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+            className="font-mono flex-none text-xl font-semibold dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
             href=""
           >
             VertexERP
@@ -217,7 +217,7 @@ const Fotter = () => {
           <div className="flex justify-between items-center">
             <div className="mt-3 sm:hidden">
               <a
-                className="flex-none text-xl font-semibold dark:text-white"
+                className="font-mono flex-none text-xl font-semibold dark:text-white"
                 href=""
                 aria-label="Brand"
               >
