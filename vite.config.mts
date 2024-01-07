@@ -61,8 +61,14 @@ export default defineConfig({
           if (id.includes("preline")) {
             return "@preline";
           }
+          if (id.includes("tailwind-merge")) {
+            return "@tailwind-merge";
+          }
           if (id.includes("zustand")) {
             return "@zustand";
+          }
+          if (id.includes("react-hook-form")) {
+            return "@react-hook-form";
           }
           if (
             id.includes("react-router-dom") ||

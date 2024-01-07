@@ -27,7 +27,7 @@ const GetStartedModal = () => {
           toggleStarted();
         }}
         className="rounded-full flex items-center justify-center 
-        hover:border hover:border-[#020303] h-[40px] w-[40px]
+        border border-transparent hover:border-[#020303] h-[40px] w-[40px]
         dark:text-white dark:hover:border-white transition-all duration-200
         absolute top-[0.5rem] right-[0.5rem] md:top-[2rem] 
         md:right-[2rem] text-2xl cursor-pointer"
