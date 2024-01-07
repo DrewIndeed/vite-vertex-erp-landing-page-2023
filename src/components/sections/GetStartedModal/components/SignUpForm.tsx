@@ -18,23 +18,23 @@ const SignUpForm = ({ toggleSignUp }: Props) => {
             <div className="grid gap-y-4">
               <div>
                 <label
-                  htmlFor="username"
+                  htmlFor="email"
                   className="block text-sm mb-2 dark:text-white"
                 >
                   Username <span className="text-red-400">*</span>
                 </label>
                 <div className="relative">
                   <input
-                    type="text"
-                    id="username"
-                    name="username"
+                    type="email"
+                    id="email"
+                    name="email"
                     className="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm 
                       focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 
                       disabled:pointer-events-none dark:bg-slate-900 
                       dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
                     required
-                    placeholder="Enter your lovely username"
-                    aria-describedby="username-error"
+                    placeholder="Enter your lovely email"
+                    aria-describedby="email-error"
                   />
                 </div>
                 {/* <p
