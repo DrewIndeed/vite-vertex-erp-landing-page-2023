@@ -5,7 +5,7 @@ const Navbar = () => {
   const toggleStarted = rootStore(({ toggleStarted }) => toggleStarted);
   return (
     <nav
-      className="fixed z-[99] filter top-0 left-0 right-0 py-4 md:py-6 
+      className="fixed z-[99] filter top-0 left-0 right-0 py-4 md:py-5 
       px-10 max-w-[110rem] flex items-center justify-between 
     bg-white text-[#020303] dark:bg-[#02030330] dark:text-white rounded-md 
       bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-20"
