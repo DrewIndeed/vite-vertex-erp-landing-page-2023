@@ -22,7 +22,7 @@ const Features = () => {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 items-center gap-8 md:gap-10 bg-white/90 dark:bg-[#03020395] backdrop-blur-sm p-5 md:p-10 rounded-md md:rounded-xl">
             {FEATURES.map((feat) => {
               return (
-                <div>
+                <div key={feat.title}>
                   <div className="relative flex justify-center items-center w-12 h-12 bg-white rounded-xl before:absolute before:-inset-px before:-z-[1] before:bg-gradient-to-br before:from-blue-600 before:via-transparent before:to-violet-600 before:rounded-xl dark:bg-slate-900">
                     {feat.icon}
                   </div>

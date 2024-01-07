@@ -224,7 +224,7 @@ const Fotter = () => {
                 VertexERP
               </a>
               <p className="mt-1 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-                © 2022 VertexERP.
+                © 2023 VertexERP.
               </p>
             </div>
 

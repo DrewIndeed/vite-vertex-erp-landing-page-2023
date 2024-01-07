@@ -1,5 +1,7 @@
 import Divider from "@components/common/Divider";
 
+import Navbar from "@components/sections/Navbar";
+
 import Hero from "@components/sections/Hero";
 
 import Features from "@components/sections/Features";
@@ -16,6 +18,7 @@ function App() {
   return (
     <main className="dark:bg-[#020303] relative max-w-[110rem] mx-auto">
       {/* navbar */}
+      <Navbar />
       {/* hero */}
       <Hero />
       <Divider />
