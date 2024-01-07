@@ -17,7 +17,7 @@ export const rootStore = create<rootStore>((set) => ({
   data: INIT_DATA,
   toggleStarted: () => {
     return set((state) => {
-      console.log({ isStarting: !state.data.isStarting });
+      // console.log({ isStarting: !state.data.isStarting });
       return {
         data: { ...state.data, isStarting: !state.data.isStarting },
       };

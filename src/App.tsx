@@ -3,6 +3,7 @@ import { lazy, Suspense, useEffect } from "react";
 import { rootStore } from "./store";
 
 import "./App.css";
+import Loader from "@components/common/Loader";
 
 const Divider = lazy(() => import("@components/common/Divider"));
 const Navbar = lazy(() => import("@components/sections/Navbar"));
@@ -50,6 +51,7 @@ function App() {
         {/* auth modal */}
         <GetStartedModal />
       </Suspense>
+      <Loader />
     </main>
   );
 }

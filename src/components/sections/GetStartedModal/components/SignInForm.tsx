@@ -21,7 +21,7 @@ const SignInForm = ({ toggleSignUp }: Props) => {
                   htmlFor="email"
                   className="block text-sm mb-2 dark:text-white"
                 >
-                  Username <span className="text-red-400">*</span>
+                  Email <span className="text-red-400">*</span>
                 </label>
                 <div className="relative">
                   <input

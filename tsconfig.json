@@ -16,6 +16,7 @@
       "@utils/*": ["./utils/*"],
       "@style/*": ["./styles/*"],
       "@icons/*": ["./assets/*"],
+      "@hooks/*": ["./hooks/*"],
     },
 
     /* Bundler mode */

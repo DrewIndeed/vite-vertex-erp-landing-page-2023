@@ -65,7 +65,7 @@ const Pricing = () => {
             className="mt-5 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg 
             border border-transparent bg-violet-100/60 text-violet-800/60 hover:bg-violet-200/60 
             disabled:opacity-50 disabled:pointer-events-none 
-            dark:hover:bg-violet-900/60 dark:text-violet-400/60 
+            dark:hover:bg-violet-800/60 dark:text-[#203030] dark:hover:text-white
             dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
             href=""
             onClick={(e) => {

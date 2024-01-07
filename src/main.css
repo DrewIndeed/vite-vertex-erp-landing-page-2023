@@ -79,7 +79,7 @@ a:not([class]) {
   text-decoration-skip-ink: auto;
 }
 
-/* reduce motion */
+/* reduce motion
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
     scroll-behavior: auto;
@@ -92,7 +92,7 @@ a:not([class]) {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
+} */
 
 /* utils */
 .noselect {
