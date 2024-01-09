@@ -20,6 +20,7 @@ interface rootStore {
   data: ROOT_DATA;
   toggleStarted: () => void;
   handleClientLogin: (accessToken: string) => void;
+  handleClientLogout: () => void;
 }
 
 export const rootStore = create<rootStore>((set) => ({
@@ -54,7 +55,7 @@ export const rootStore = create<rootStore>((set) => ({
         },
       };
     }),
-  logOut: () => {
+  handleClientLogout: () => {
     localStorage.setItem("in", "false");
     localStorage.removeItem("tk");
     localStorage.removeItem("man");
