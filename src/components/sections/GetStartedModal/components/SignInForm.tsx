@@ -4,6 +4,9 @@ import { enqueueSnackbar } from "notistack";
 import { useForm } from "react-hook-form";
 import { LoginResponse } from "types/auth.request";
 import { AxiosError } from "axios";
+import { rootStore } from "@store/index";
+import { useState } from "react";
+import Loader from "@components/common/Loader";
 
 type Props = {
   toggleSignUp: () => void;
@@ -18,27 +21,41 @@ const SignInForm = ({ toggleSignUp }: Props) => {
     // control,
     formState: { errors: formErrors },
     // clearErrors,
+    reset,
   } = useForm({
     defaultValues: {
       email: "",
       password: "",
     },
-    // mode: "onChange",
+    mode: "onChange",
   });
+  const clientLogin = rootStore(({ handleClientLogin }) => handleClientLogin);
+
+  // states
+  const [logging, setLogging] = useState(false);
 
   // methods
   const onSubmit = async (data: Record<string, string>) => {
+    setLogging(true);
     try {
       const response: LoginResponse = await fetcher.post(ENDPOINTS.login, {
         ...data,
       });
-      if (response.message === "Login successful") {
-        // TODO: save token, update client login status
-        enqueueSnackbar(`Welcome back, ${data.email}`, {
-          variant: "success",
-        });
+      if (response.message === "Login successful" && response.token) {
+        // handle login actions at client
+        clientLogin(response.token);
+        setTimeout(() => {
+          // reset form
+          reset();
+          setLogging(false);
+          // msg
+          enqueueSnackbar(`Welcome back, ${data.email}`, {
+            variant: "success",
+          });
+        }, 500);
       }
     } catch (error) {
+      setLogging(false);
       enqueueSnackbar(
         ((error as AxiosError)?.response?.data as { message: string })
           ?.message || "Internal error. Please try again later",
@@ -138,13 +155,14 @@ const SignInForm = ({ toggleSignUp }: Props) => {
 
               <button
                 type="submit"
+                disabled={logging}
                 className="w-full mt-4 py-3 px-4 inline-flex justify-center items-center 
                 gap-x-2 text-sm font-semibold rounded-lg border border-transparent 
                 bg-violet-600 text-white hover:bg-violet-700 disabled:opacity-50 
                 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 
                 dark:focus:ring-gray-600"
               >
-                Sign in
+                {logging ? <Loader /> : "Sign in"}
               </button>
             </div>
           </form>

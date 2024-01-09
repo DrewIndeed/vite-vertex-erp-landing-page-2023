@@ -51,6 +51,9 @@ export default defineConfig({
           if (id.includes("resize-observer-polyfill")) {
             return "@resize-observer-polyfill";
           }
+          if (id.includes("crypto-js")) {
+            return "@crypto-js";
+          }
           if (id.includes("styled-components")) {
             return "@styled-components";
           }
