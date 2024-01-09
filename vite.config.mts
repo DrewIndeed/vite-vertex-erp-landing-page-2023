@@ -17,6 +17,7 @@ export default defineConfig({
       "@icons": path.resolve(__dirname, "./src/assets"),
       "@hooks": path.resolve(__dirname, "./src/hooks"),
       "@constants": path.resolve(__dirname, "./src/constants"),
+      "@api": path.resolve(__dirname, "./src/api"),
     },
   },
   server: {
@@ -58,6 +59,9 @@ export default defineConfig({
           }
           if (id.includes("postcss")) {
             return "@postcss";
+          }
+          if (id.includes("notistack")) {
+            return "@notistack";
           }
           if (id.includes("preline")) {
             return "@preline";

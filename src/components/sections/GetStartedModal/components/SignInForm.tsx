@@ -1,11 +1,16 @@
 import { EMAIL_PATTERN } from "@constants/index";
+import { ENDPOINTS, fetcher } from "@api/useAxiosSWR";
+import { enqueueSnackbar } from "notistack";
 import { useForm } from "react-hook-form";
+import { LoginResponse } from "types/auth.request";
+import { AxiosError } from "axios";
 
 type Props = {
   toggleSignUp: () => void;
 };
 
 const SignInForm = ({ toggleSignUp }: Props) => {
+  // hooks
   const {
     register,
     handleSubmit,
@@ -21,8 +26,27 @@ const SignInForm = ({ toggleSignUp }: Props) => {
     // mode: "onChange",
   });
 
-  const onSubmit = (data: Record<string, string>) => {
-    console.log(data);
+  // methods
+  const onSubmit = async (data: Record<string, string>) => {
+    try {
+      const response: LoginResponse = await fetcher.post(ENDPOINTS.login, {
+        ...data,
+      });
+      if (response.message === "Login successful") {
+        // TODO: save token, update client login status
+        enqueueSnackbar(`Welcome back, ${data.email}`, {
+          variant: "success",
+        });
+      }
+    } catch (error) {
+      enqueueSnackbar(
+        ((error as AxiosError)?.response?.data as { message: string })
+          ?.message || "Internal error. Please try again later",
+        {
+          variant: "error",
+        }
+      );
+    }
   };
 
   return (
