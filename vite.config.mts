@@ -15,6 +15,9 @@ export default defineConfig({
       "@utils": path.resolve(__dirname, "./src/utils"),
       "@style": path.resolve(__dirname, "./src/styles"),
       "@icons": path.resolve(__dirname, "./src/assets"),
+      "@hooks": path.resolve(__dirname, "./src/hooks"),
+      "@constants": path.resolve(__dirname, "./src/constants"),
+      "@api": path.resolve(__dirname, "./src/api"),
     },
   },
   server: {
@@ -48,6 +51,9 @@ export default defineConfig({
           if (id.includes("resize-observer-polyfill")) {
             return "@resize-observer-polyfill";
           }
+          if (id.includes("crypto-js")) {
+            return "@crypto-js";
+          }
           if (id.includes("styled-components")) {
             return "@styled-components";
           }
@@ -57,11 +63,26 @@ export default defineConfig({
           if (id.includes("postcss")) {
             return "@postcss";
           }
+          if (id.includes("notistack")) {
+            return "@notistack";
+          }
           if (id.includes("preline")) {
             return "@preline";
           }
+          if (id.includes("tailwind-merge")) {
+            return "@tailwind-merge";
+          }
           if (id.includes("zustand")) {
             return "@zustand";
+          }
+          if (id.includes("react-hook-form")) {
+            return "@react-hook-form";
+          }
+          if (id.includes("axios")) {
+            return "@axios";
+          }
+          if (id.includes("swr")) {
+            return "@swr";
           }
           if (
             id.includes("react-router-dom") ||
