@@ -10,6 +10,7 @@ const GetStartedModal = () => {
 
   // states
   const [isSignUp, setSignUp] = useState(false);
+  const [loginSuccess, setLoginSuccess] = useState(false);
 
   // methods
   const toggleSignUp = useCallback(() => setSignUp(!isSignUp), [isSignUp]);
@@ -21,7 +22,7 @@ const GetStartedModal = () => {
     bg-clip-padding backdrop-filter backdrop-blur-md bg-white/60 dark:bg-[#020303]/60 
     flex items-center justify-center animate-fadeIn"
     >
-      <div
+      {!loginSuccess && <div
         onClick={() => {
           setSignUp(false);
           toggleStarted();
@@ -33,11 +34,17 @@ const GetStartedModal = () => {
         md:right-[2rem] text-2xl cursor-pointer"
       >
         ✕
-      </div>
+      </div>}
       {isSignUp ? (
-        <SignUpForm toggleSignUp={toggleSignUp} />
+        <SignUpForm
+          toggleSignUp={toggleSignUp}
+        />
       ) : (
-        <SignInForm toggleSignUp={toggleSignUp} />
+        <SignInForm
+          toggleSignUp={toggleSignUp}
+          loginSuccess={loginSuccess}
+          setLoginSuccess={setLoginSuccess}
+        />
       )}
     </div>
   );

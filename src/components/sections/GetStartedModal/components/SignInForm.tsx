@@ -5,14 +5,16 @@ import { useForm } from "react-hook-form";
 import { LoginResponse } from "types/auth.request";
 import { AxiosError } from "axios";
 import { rootStore } from "@store/index";
-import { useState } from "react";
+import React, { useState } from "react";
 import Loader from "@components/common/Loader";
 
 type Props = {
   toggleSignUp: () => void;
+  loginSuccess: boolean
+  setLoginSuccess: React.Dispatch<React.SetStateAction<boolean>>
 };
 
-const SignInForm = ({ toggleSignUp }: Props) => {
+const SignInForm = ({ toggleSignUp, loginSuccess, setLoginSuccess }: Props) => {
   // hooks
   const {
     register,
@@ -45,6 +47,7 @@ const SignInForm = ({ toggleSignUp }: Props) => {
         const erpTarget = `http://${response.domain!}`
         // handle login actions at client
         clientLogin(response.token);
+        setLoginSuccess(true)
         setTimeout(() => {
           // reset form
           reset();
@@ -53,17 +56,12 @@ const SignInForm = ({ toggleSignUp }: Props) => {
           enqueueSnackbar(`Welcome back, ${data.email}`, {
             variant: "success",
           });
-          setTimeout(() => {
-            enqueueSnackbar(`Redirecting to ${erpTarget} ... Please wait a moment.`, {
-              variant: "info",
-            });
-          }, 200);
         }, 200);
 
         // redirect to ERP platform
         setTimeout(() => {
-          location.href = erpTarget
-        }, 100);
+          location.replace(erpTarget)
+        }, 500);
       }
     } catch (error) {
       setLogging(false);
@@ -82,7 +80,7 @@ const SignInForm = ({ toggleSignUp }: Props) => {
       className="w-full mx-4 lg:mx-0 md:max-w-[450px] mt-7 bg-white border border-gray-200 rounded-xl shadow-sm 
     dark:bg-gray-800 dark:border-gray-700"
     >
-      <div className="p-4 sm:p-7">
+      {!loginSuccess && <div className="p-4 sm:p-7">
         <h1 className="block text-2xl font-bold text-gray-800 dark:text-white text-center">
           Sign in
         </h1>
@@ -206,7 +204,11 @@ const SignInForm = ({ toggleSignUp }: Props) => {
             </a>
           </p>
         </div>
-      </div>
+      </div>}
+      {loginSuccess && <div className="w-full h-[300px] relative flex flex-col items-center justify-center gap-[1rem]">
+        <Loader />
+        <span className="text-gray-800 dark:text-white">Redirecting to Frappe ...</span>
+      </div>}
     </div>
   );
 };
