@@ -42,6 +42,7 @@ const SignInForm = ({ toggleSignUp }: Props) => {
         ...data,
       });
       if (response.message === "Login successful" && response.token) {
+        const erpTarget = `http://${response.domain!}`
         // handle login actions at client
         clientLogin(response.token);
         setTimeout(() => {
@@ -52,7 +53,17 @@ const SignInForm = ({ toggleSignUp }: Props) => {
           enqueueSnackbar(`Welcome back, ${data.email}`, {
             variant: "success",
           });
-        }, 500);
+          setTimeout(() => {
+            enqueueSnackbar(`Redirecting to ${erpTarget} ... Please wait a moment.`, {
+              variant: "info",
+            });
+          }, 200);
+        }, 200);
+
+        // redirect to ERP platform
+        setTimeout(() => {
+          location.href = erpTarget
+        }, 100);
       }
     } catch (error) {
       setLogging(false);
@@ -139,8 +150,8 @@ const SignInForm = ({ toggleSignUp }: Props) => {
                     {...register("password", {
                       required: "Password is required",
                       minLength: {
-                        value: 8,
-                        message: "Password must have at least 8 characters",
+                        value: 6,
+                        message: "Password must have at least 6 characters",
                       },
                     })}
                     aria-invalid={formErrors.password ? "true" : "false"}

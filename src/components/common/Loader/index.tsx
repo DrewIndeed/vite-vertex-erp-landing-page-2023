@@ -1,8 +1,8 @@
 const Loader = () => {
   return (
     <div
-      className="animate-spin inline-block w-8 h-8 border-[3px] border-current 
-      border-t-transparent text-violet-600 rounded-full dark:text-violet-500"
+      className="animate-spin inline-block w-6 h-6 border-[3px] border-white 
+      border-t-transparent rounded-full dark:text-white text-gray-800"
       role="status"
       aria-label="loading"
     >

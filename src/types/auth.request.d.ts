@@ -1,6 +1,7 @@
 export type LoginResponse = {
   message: string;
   token?: string;
+  domain?: string;
 };
 
 export type DecodedJwt = {
