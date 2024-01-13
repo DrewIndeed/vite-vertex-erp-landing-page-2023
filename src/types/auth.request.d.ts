@@ -19,3 +19,27 @@ export type DecodedJwt = {
   jti: string;
   email: string;
 };
+
+export interface SignUpResponse {
+  message: string
+  response: Response
+}
+
+export interface Response {
+  User: User
+}
+
+export interface User {
+  Username: string
+  Attributes: Attribute[]
+  UserCreateDate: string
+  UserLastModifiedDate: string
+  Enabled: boolean
+  UserStatus: string
+}
+
+export interface Attribute {
+  Name: string
+  Value: string
+}
+

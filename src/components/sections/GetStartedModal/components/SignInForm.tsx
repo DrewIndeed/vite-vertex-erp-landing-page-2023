@@ -67,7 +67,7 @@ const SignInForm = ({ toggleSignUp, loginSuccess, setLoginSuccess }: Props) => {
       setLogging(false);
       enqueueSnackbar(
         ((error as AxiosError)?.response?.data as { message: string })
-          ?.message || "Internal error. Please try again later",
+          ?.message || (error as Error).message || "Internal error. Please try again later",
         {
           variant: "error",
         }
