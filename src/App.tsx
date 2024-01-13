@@ -16,7 +16,15 @@ const GetStartedModal = lazy(
 );
 
 function App() {
+  // store
   const isStarting = rootStore(({ data }) => data.isStarting);
+  const handleClientLogout = rootStore(({ handleClientLogout }) => handleClientLogout);
+
+  // effects
+  useEffect(() => {
+    handleClientLogout();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   useEffect(() => {
     const rootBody = document.getElementById("root-body");
     if (rootBody) {

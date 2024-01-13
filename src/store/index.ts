@@ -4,6 +4,7 @@ import { DecodedJwt } from "types/auth.request";
 
 type ROOT_DATA = {
   isStarting: boolean;
+  isSignUp: boolean;
   isIn: boolean;
   man: DecodedJwt | null;
   tk: string;
@@ -11,6 +12,7 @@ type ROOT_DATA = {
 
 const INIT_DATA: ROOT_DATA = {
   isStarting: false,
+  isSignUp: false,
   isIn: false,
   man: null,
   tk: "",
@@ -19,6 +21,7 @@ const INIT_DATA: ROOT_DATA = {
 interface rootStore {
   data: ROOT_DATA;
   toggleStarted: () => void;
+  toggleSignUp: () => void;
   handleClientLogin: (accessToken: string) => void;
   handleClientLogout: () => void;
 }
@@ -28,10 +31,17 @@ export const rootStore = create<rootStore>((set) => ({
   toggleStarted: () =>
     set((state) => {
       // console.log({ isStarting: !state.data.isStarting });
-
       // final update
       return {
         data: { ...state.data, isStarting: !state.data.isStarting },
+      };
+    }),
+  toggleSignUp: () =>
+    set((state) => {
+      // console.log({ isStarting: !state.data.isSignUp });
+      // final update
+      return {
+        data: { ...state.data, isSignUp: !state.data.isSignUp },
       };
     }),
   handleClientLogin: (accessToken) =>
