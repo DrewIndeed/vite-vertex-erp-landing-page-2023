@@ -1,19 +1,17 @@
 import { rootStore } from "@store/index";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import SignInForm from "./components/SignInForm";
 import SignUpForm from "./components/SignUpForm";
 
 const GetStartedModal = () => {
   // store
   const isStarting = rootStore(({ data }) => data.isStarting);
+  const isSignUp = rootStore(({ data }) => data.isSignUp);
   const toggleStarted = rootStore(({ toggleStarted }) => toggleStarted);
+  const toggleSignUp = rootStore(({ toggleSignUp }) => toggleSignUp);
 
   // states
-  const [isSignUp, setSignUp] = useState(false);
   const [loginSuccess, setLoginSuccess] = useState(false);
-
-  // methods
-  const toggleSignUp = useCallback(() => setSignUp(!isSignUp), [isSignUp]);
 
   if (!isStarting) return null;
   return (
@@ -24,7 +22,7 @@ const GetStartedModal = () => {
     >
       {!loginSuccess && <div
         onClick={() => {
-          setSignUp(false);
+          if (isSignUp) toggleSignUp()
           toggleStarted();
         }}
         className="rounded-full flex items-center justify-center 

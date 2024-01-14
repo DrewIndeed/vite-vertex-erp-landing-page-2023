@@ -49,15 +49,15 @@ const Hero = () => {
             Get started
             <Icons.GetStartedChevronRight />
           </a>
-          <button type="button" className="group yarn-add-wrapper">
+          {/* <button type="button" className="group yarn-add-wrapper">
             $ yarn add vertex-erp
             <span className="flex justify-center items-center bg-gray-200 rounded-md w-7 h-7 dark:bg-gray-700 dark:text-gray-400">
               <Icons.YarnAddCopy />
             </span>
-          </button>
+          </button> */}
         </div>
         {/* package manager */}
-        <div className="mt-5 flex justify-center items-center gap-x-1 sm:gap-x-3">
+        {/* <div className="mt-5 flex justify-center items-center gap-x-1 sm:gap-x-3">
           <span className="text-sm text-gray-600 dark:text-gray-400">
             Package Manager:
           </span>
@@ -72,7 +72,7 @@ const Hero = () => {
             Installation Guide
             <Icons.InstallationChevronRight />
           </a>
-        </div>
+        </div> */}
         {/* rating and partners */}
         <div className="mt-6 sm:mt-12 lg:mt-16 flex gap-5 md:gap-12 justify-center flex-col sm:flex-row">
           {/* ratings */}

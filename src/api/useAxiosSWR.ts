@@ -6,6 +6,7 @@ import AxiosFetcher from "./AxiosFetcher";
 export const ENDPOINTS = {
   // auth
   login: "/auth/login",
+  signup: "/auth/signup",
 };
 // Instance of AxiosFetcher
 // console.log({ meta_vite: import.meta.env });
