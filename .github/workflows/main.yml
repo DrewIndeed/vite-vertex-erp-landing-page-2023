@@ -11,8 +11,9 @@ jobs:
     steps:
     - name: Checkout main branch
       uses: actions/checkout@main
-    - name: Create dist static site
+    - name: Install dependencies
       run: yarn install
+    - name: Create dist static site
       run: yarn build
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
