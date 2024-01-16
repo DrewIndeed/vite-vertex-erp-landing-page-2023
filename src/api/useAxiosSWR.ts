@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import useSWR from "swr";
 import AxiosFetcher from "./AxiosFetcher";
+import { VITE_BE_DOMAIN } from "@constants/index";
 
 // ENDPOINTS keys
 export const ENDPOINTS = {
@@ -10,7 +11,7 @@ export const ENDPOINTS = {
 };
 // Instance of AxiosFetcher
 // console.log({ meta_vite: import.meta.env });
-export const fetcher = new AxiosFetcher(import.meta.env.VITE_BE_DOMAIN! || "");
+export const fetcher = new AxiosFetcher(VITE_BE_DOMAIN);
 
 // config for swr
 const SWRoptions = {
