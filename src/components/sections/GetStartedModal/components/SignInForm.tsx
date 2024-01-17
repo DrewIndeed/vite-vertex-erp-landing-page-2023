@@ -35,6 +35,7 @@ const SignInForm = ({ toggleSignUp, loginSuccess, setLoginSuccess }: Props) => {
 
   // states
   const [logging, setLogging] = useState(false);
+  const [hasDomain, setHasDomain] = useState(false);
 
   // methods
   const onSubmit = async (data: Record<string, string>) => {
@@ -44,14 +45,36 @@ const SignInForm = ({ toggleSignUp, loginSuccess, setLoginSuccess }: Props) => {
         ...data,
       });
       if (response.message === "Login successful" && response.token) {
-        const erpTarget = `http://${response.domain!}`
-        // handle login actions at client
-        clientLogin(response.token);
-        setLoginSuccess(true)
-        setTimeout(() => {
+        const _resetting = () => {
           // reset form
           reset();
           setLogging(false);
+        }
+
+        // handle login toen and state at client
+        clientLogin(response.token);
+        setLoginSuccess(true)
+
+        // is user has not chosen plan
+        if (response.domain === null) {
+          setTimeout(() => {
+            _resetting()
+            // msg
+            enqueueSnackbar(`Welcome to VertexERP, ${data.email}`, {
+              variant: "success",
+            });
+          }, 200);
+
+          // TODO: becAUSE Stripe has been removed, after msg we can show plans to choose 
+          // OR navigate to plans section so that users can pick
+          return;
+        }
+
+        // if user has chosen plan
+        setHasDomain(true)
+        const erpTarget = `http://${response.domain!}`
+        setTimeout(() => {
+          _resetting()
           // msg
           enqueueSnackbar(`Welcome back, ${data.email}`, {
             variant: "success",
@@ -207,7 +230,9 @@ const SignInForm = ({ toggleSignUp, loginSuccess, setLoginSuccess }: Props) => {
       </div>}
       {loginSuccess && <div className="w-full h-[300px] relative flex flex-col items-center justify-center gap-[1rem]">
         <Loader />
-        <span className="text-gray-800 dark:text-white">Redirecting to Frappe ...</span>
+        <span className="text-gray-800 dark:text-white">
+          {hasDomain ? "Redirecting to Frappe ..." : "Redirecting to Subscriptions ..."}
+        </span>
       </div>}
     </div>
   );
