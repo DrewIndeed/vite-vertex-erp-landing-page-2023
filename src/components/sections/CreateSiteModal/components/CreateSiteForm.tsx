@@ -31,8 +31,11 @@ const CreateSiteForm = () => {
   const [logging, setLogging] = useState(false);
 
   const onSubmit = async (data: Record<string, string>) => {
-    console.log('data', data);
+    // console.log('data', data);
     setLogging(true);
+    enqueueSnackbar('This process will usually take 2-3 minutes. Please wait for a moment ❤️', {
+      variant: 'warning',
+    });
     try {
       const response: ConfigSiteResponse = await fetcher.post(
         ENDPOINTS.configSite,
@@ -45,8 +48,8 @@ const CreateSiteForm = () => {
           },
         }
       );
-      console.log('response', response);
-      console.log('response.status', response.status);
+      // console.log('response', response);
+      // console.log('response.status', response.status);
       if (response.status === 200) {
         console.log(response);
         await createSite(data.siteName, data.sitePassword);
@@ -63,8 +66,8 @@ const CreateSiteForm = () => {
       enqueueSnackbar(
         ((error as AxiosError)?.response?.data as { message: string })
           ?.message ||
-          (error as Error).message ||
-          'Internal error. Please try again later',
+        (error as Error).message ||
+        'Internal error. Please try again later',
         {
           variant: 'error',
         }
@@ -94,6 +97,7 @@ const CreateSiteForm = () => {
                 </label>
                 <div className='relative'>
                   <input
+                    disabled={logging}
                     type='text'
                     id='siteName'
                     // name="email"
@@ -121,6 +125,7 @@ const CreateSiteForm = () => {
                 </div>
                 <div className='relative'>
                   <input
+                    disabled={logging}
                     type='password'
                     id='sitePassword'
                     // name="password"

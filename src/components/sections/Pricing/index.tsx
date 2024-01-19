@@ -2,8 +2,7 @@ import { ENDPOINTS, fetcher } from '@api/useAxiosSWR';
 import { rootStore } from '@store/index';
 import { enqueueSnackbar } from 'notistack';
 import {
-  RegisterPremiumResponse,
-  RegisterTrialResponse,
+  RegisterTrialResponse
 } from 'types/auth.request';
 
 const TickMark = () => (
@@ -52,39 +51,12 @@ async function registerTrial(tk: string) {
   }
 }
 
-async function registerPremium(tk: string) {
-  try {
-    const response: RegisterPremiumResponse = await fetcher.post(
-      ENDPOINTS.registerPremium,
-      {},
-      {
-        headers: {
-          Authorization: `Bearer ${tk}`,
-        },
-      }
-    );
-    if (response.status === 200) {
-      console.log(response);
-      enqueueSnackbar('Premium registered successfully', {
-        variant: 'success',
-      });
-
-      return true;
-    }
-  } catch (error) {
-    console.log(error);
-    return false;
-  }
-}
-
 const Pricing = ({ isInModal, isExpiredPlan }: Props) => {
   const tk = rootStore(({ data }) => data.tk);
   const isSignUp = rootStore(({ data }) => data.isSignUp);
   const toggleStarted = rootStore(({ toggleStarted }) => toggleStarted);
   const toggleSignUp = rootStore(({ toggleSignUp }) => toggleSignUp);
-  const toggleConfigSite = rootStore(
-    ({ toggleConfigSite }) => toggleConfigSite
-  );
+  const togglePayment = rootStore(({ togglePayment }) => togglePayment);
 
   const mainTitle = isInModal ? 'Choose you plan' : 'Pricing';
   const cta = isInModal ? 'I Want This' : 'Sign Up';
@@ -100,7 +72,7 @@ const Pricing = ({ isInModal, isExpiredPlan }: Props) => {
     e.preventDefault();
     await registerTrial(tk);
     toggleStarted();
-    toggleConfigSite();
+    // toggleConfigSite();
   };
   const handlePremiumClicked = async (
     e: React.MouseEvent<HTMLAnchorElement>
@@ -108,9 +80,10 @@ const Pricing = ({ isInModal, isExpiredPlan }: Props) => {
     if (!isInModal) commonOnClick(e);
 
     e.preventDefault();
-    await registerPremium(tk);
-    toggleStarted();
-    toggleConfigSite();
+    // await registerPremium(tk);
+    // toggleStarted();
+    // toggleConfigSite();
+    togglePayment();
   };
   return (
     <div
@@ -121,9 +94,13 @@ const Pricing = ({ isInModal, isExpiredPlan }: Props) => {
         <h2 className='text-2xl font-bold md:text-4xl md:leading-tight dark:text-white'>
           {mainTitle}
         </h2>
-        <p className='mt-1 text-gray-600 dark:text-gray-400'>
-          Whatever your status, our offers evolve according to your needs.
-        </p>
+        {isExpiredPlan ? <p className='mt-1 text-red-600 dark:text-red-400'>
+          * Your trial has eneded, please kindly upgrade to continue
+        </p> :
+          <p className='mt-1 text-gray-600 dark:text-gray-400'>
+            Whatever your status, our offers evolve according to your needs.
+          </p>
+        }
       </div>
 
       <div className='mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 lg:items-center'>

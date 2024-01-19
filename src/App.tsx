@@ -3,7 +3,6 @@ import { lazy, Suspense, useEffect } from "react";
 import { rootStore } from "./store";
 
 import "./App.css";
-import CreateSiteModal from "@components/CreateSiteModal";
 
 const Divider = lazy(() => import("@components/common/Divider"));
 const Navbar = lazy(() => import("@components/sections/Navbar"));
@@ -14,6 +13,12 @@ const Pricing = lazy(() => import("@components/sections/Pricing"));
 const Footer = lazy(() => import("@components/sections/Footer"));
 const GetStartedModal = lazy(
   () => import("@components/sections/GetStartedModal")
+);
+const CreateSiteModal = lazy(
+  () => import("@components/sections/CreateSiteModal")
+);
+const PaymentModal = lazy(
+  () => import("@components/sections/PaymentModal")
 );
 
 function App() {
@@ -59,8 +64,9 @@ function App() {
         {/* auth modal */}
         <GetStartedModal />
         {/* config site modal */}
-        <CreateSiteModal/>
-      
+        <CreateSiteModal />
+        {/* payment full page modal */}
+        <PaymentModal />
       </Suspense>
     </main>
   );

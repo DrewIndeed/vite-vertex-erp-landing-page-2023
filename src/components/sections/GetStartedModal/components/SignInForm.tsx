@@ -87,8 +87,6 @@ const SignInForm = ({ toggleSignUp, loginSuccess, setLoginSuccess }: Props) => {
           return;
         }
 
-        
-
         // if user has chosen plan
         setHasDomain(true)
         const erpTarget = `http://${response.domain!}`
@@ -249,11 +247,11 @@ const SignInForm = ({ toggleSignUp, loginSuccess, setLoginSuccess }: Props) => {
       {loginSuccess && hasDomain && <div className="w-full h-[300px] relative flex flex-col items-center justify-center gap-[1rem]">
         <Loader />
         <span className="text-gray-800 dark:text-white">
-          "Redirecting to Frappe ..."
+          Redirecting to Frappe ...
         </span>
       </div>}
       {loginSuccess && !hasDomain && <div className="w-full h-auto relative flex flex-col items-center justify-center">
-        <Pricing isInModal isExpiredPlan={isExpiredPlan}/>
+        <Pricing isInModal isExpiredPlan={isExpiredPlan} />
       </div>}
     </div>
   );
