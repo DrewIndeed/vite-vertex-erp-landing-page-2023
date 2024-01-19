@@ -6,6 +6,7 @@ type ROOT_DATA = {
   isStarting: boolean;
   isSignUp: boolean;
   isIn: boolean;
+  isConfigSite: boolean;
   man: DecodedJwt | null;
   tk: string;
 };
@@ -14,6 +15,7 @@ const INIT_DATA: ROOT_DATA = {
   isStarting: false,
   isSignUp: false,
   isIn: false,
+  isConfigSite: false,
   man: null,
   tk: "",
 };
@@ -22,6 +24,7 @@ interface rootStore {
   data: ROOT_DATA;
   toggleStarted: () => void;
   toggleSignUp: () => void;
+  toggleConfigSite: () => void;
   handleClientLogin: (accessToken: string) => void;
   handleClientLogout: () => void;
 }
@@ -44,6 +47,11 @@ export const rootStore = create<rootStore>((set) => ({
         data: { ...state.data, isSignUp: !state.data.isSignUp },
       };
     }),
+  toggleConfigSite: () => set((state) => {
+    return {
+      data: { ...state.data, isConfigSite: !state.data.isConfigSite },
+    }
+  }),
   handleClientLogin: (accessToken) =>
     // save global data
     set((state) => {

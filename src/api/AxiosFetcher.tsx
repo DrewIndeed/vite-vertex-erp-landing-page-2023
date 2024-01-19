@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 class AxiosFetcher {
   private axiosInstance: AxiosInstance;
@@ -24,7 +24,7 @@ class AxiosFetcher {
 
     config.headers = {
       ...config.headers,
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     };
 
     // Add Bearer Token header
@@ -51,9 +51,13 @@ class AxiosFetcher {
   }
 
   public get<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
-    return this.axiosInstance
-      .get<T>(url, config)
-      .then((response) => response.data);
+    return this.axiosInstance.get<T>(url, config).then((response) => {
+      const status = response.status;
+      return {
+        status,
+        ...response.data,
+      };
+    });
   }
 
   public post<T>(
@@ -61,9 +65,13 @@ class AxiosFetcher {
     data?: any,
     config?: AxiosRequestConfig
   ): Promise<T> {
-    return this.axiosInstance
-      .post<T>(url, data, config)
-      .then((response) => response.data);
+    return this.axiosInstance.post<T>(url, data, config).then((response) => {
+      const status = response.status;
+      return {
+        status,
+        ...response.data,
+      };
+    });
   }
 
   public put<T>(
@@ -71,15 +79,23 @@ class AxiosFetcher {
     data?: any,
     config?: AxiosRequestConfig
   ): Promise<T> {
-    return this.axiosInstance
-      .put<T>(url, data, config)
-      .then((response) => response.data);
+    return this.axiosInstance.put<T>(url, data, config).then((response) => {
+      const status = response.status;
+      return {
+        status,
+        ...response.data,
+      };
+    });
   }
 
   public delete<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
-    return this.axiosInstance
-      .delete<T>(url, config)
-      .then((response) => response.data);
+    return this.axiosInstance.delete<T>(url, config).then((response) => {
+      const status = response.status;
+      return {
+        status,
+        ...response.data,
+      };
+    });
   }
 
   // Add other methods (PATCH, etc.) as needed
@@ -88,9 +104,13 @@ class AxiosFetcher {
     data?: any,
     config?: AxiosRequestConfig
   ): Promise<T> {
-    return this.axiosInstance
-      .patch<T>(url, data, config)
-      .then((response) => response.data);
+    return this.axiosInstance.patch<T>(url, data, config).then((response) => {
+      const status = response.status;
+      return {
+        status,
+        ...response.data,
+      };
+    });
   }
 }
 

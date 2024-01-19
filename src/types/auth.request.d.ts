@@ -1,7 +1,9 @@
+import { AxiosResponse } from 'axios';
 export type LoginResponse = {
   message: string;
   token?: string;
   domain?: string;
+  isExpired: boolean;
 };
 
 export type DecodedJwt = {
@@ -27,6 +29,21 @@ export interface SignUpResponse {
 
 export interface Response {
   User: User
+}
+
+export interface ConfigSiteResponse extends AxiosResponse {
+  message: string,
+  siteName: string,
+  sitePassword: string,
+  siteDomain: string,
+}
+
+export interface RegisterTrialResponse extends AxiosResponse {
+  message: string,
+}
+
+export interface RegisterPremiumResponse extends AxiosResponse {
+  message: string,
 }
 
 export interface User {
