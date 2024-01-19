@@ -7,6 +7,8 @@ import { AxiosError } from "axios";
 import { rootStore } from "@store/index";
 import React, { useState } from "react";
 import Loader from "@components/common/Loader";
+import Pricing from "@components/sections/Pricing";
+import { cn } from "@utils/index";
 
 type Props = {
   toggleSignUp: () => void;
@@ -32,6 +34,7 @@ const SignInForm = ({ toggleSignUp, loginSuccess, setLoginSuccess }: Props) => {
     mode: "onChange",
   });
   const clientLogin = rootStore(({ handleClientLogin }) => handleClientLogin);
+  const toggleStarted = rootStore(({ toggleStarted }) => toggleStarted);
 
   // states
   const [logging, setLogging] = useState(false);
@@ -100,8 +103,7 @@ const SignInForm = ({ toggleSignUp, loginSuccess, setLoginSuccess }: Props) => {
 
   return (
     <div
-      className="w-full mx-4 lg:mx-0 md:max-w-[450px] mt-7 bg-white border border-gray-200 rounded-xl shadow-sm 
-    dark:bg-gray-800 dark:border-gray-700"
+      className={cn("w-full mx-4 lg:mx-0 mt-7 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700 md:max-w-[450px]", loginSuccess && !hasDomain && "md:max-w-max")}
     >
       {!loginSuccess && <div className="p-4 sm:p-7">
         <h1 className="block text-2xl font-bold text-gray-800 dark:text-white text-center">
@@ -228,11 +230,14 @@ const SignInForm = ({ toggleSignUp, loginSuccess, setLoginSuccess }: Props) => {
           </p>
         </div>
       </div>}
-      {loginSuccess && <div className="w-full h-[300px] relative flex flex-col items-center justify-center gap-[1rem]">
+      {loginSuccess && hasDomain && <div className="w-full h-[300px] relative flex flex-col items-center justify-center gap-[1rem]">
         <Loader />
         <span className="text-gray-800 dark:text-white">
-          {hasDomain ? "Redirecting to Frappe ..." : "Redirecting to Subscriptions ..."}
+          "Redirecting to Frappe ..."
         </span>
+      </div>}
+      {loginSuccess && !hasDomain && <div className="w-full h-auto relative flex flex-col items-center justify-center">
+        <Pricing isInModal />
       </div>}
     </div>
   );

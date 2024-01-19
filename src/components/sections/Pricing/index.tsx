@@ -17,15 +17,34 @@ const TickMark = () => (
   </svg>
 );
 
-const Pricing = () => {
+type Props = {
+  isInModal?: boolean;
+}
+
+const Pricing = ({ isInModal }: Props) => {
   const isSignUp = rootStore(({ data }) => data.isSignUp);
   const toggleStarted = rootStore(({ toggleStarted }) => toggleStarted);
   const toggleSignUp = rootStore(({ toggleSignUp }) => toggleSignUp);
+
+  const mainTitle = isInModal ? "Choose you plan" : "Pricing"
+  const cta = isInModal ? "I Want This" : "Sign Up"
+
+  const commonOnClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    toggleStarted();
+    if (!isSignUp) toggleSignUp()
+  }
+  const handleFreeClicked = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!isInModal) commonOnClick(e)
+  }
+  const handlePremiumClicked = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!isInModal) commonOnClick(e)
+  }
   return (
-    <div className="max-w-[42rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+    <div className="max-w-[42rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto" id="pricing">
       <div className="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
         <h2 className="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">
-          Pricing
+          {mainTitle}
         </h2>
         <p className="mt-1 text-gray-600 dark:text-gray-400">
           Whatever your status, our offers evolve according to your needs.
@@ -70,13 +89,9 @@ const Pricing = () => {
             dark:hover:bg-violet-800/60 dark:text-[#203030] dark:hover:text-white
             dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
             href=""
-            onClick={(e) => {
-              e.preventDefault();
-              toggleStarted();
-              if (!isSignUp) toggleSignUp()
-            }}
+            onClick={handleFreeClicked}
           >
-            Sign up
+            {cta}
           </a>
         </div>
 
@@ -87,7 +102,7 @@ const Pricing = () => {
             </span>
           </p>
           <h4 className="font-medium text-lg text-gray-800 dark:text-gray-200">
-            Startup
+            Premium
           </h4>
           <span className="mt-5 font-bold text-5xl text-gray-800 dark:text-yellow-400">
             <span className="font-bold text-2xl -my-2">$</span>
@@ -113,7 +128,7 @@ const Pricing = () => {
               >
                 <polyline points="20 6 9 17 4 12" />
               </svg>
-              <span className="text-gray-800 dark:text-gray-400">2 users</span>
+              <span className="text-gray-800 dark:text-gray-400">Unlimited users</span>
             </li>
 
             <li className="flex space-x-2">
@@ -132,7 +147,7 @@ const Pricing = () => {
                 <polyline points="20 6 9 17 4 12" />
               </svg>
               <span className="text-gray-800 dark:text-gray-400">
-                Plan features
+                All exclusive features
               </span>
             </li>
 
@@ -161,13 +176,9 @@ const Pricing = () => {
             className="mt-5 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold 
             rounded-lg border border-transparent bg-violet-600/60 text-white hover:bg-violet-700/60 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
             href=""
-            onClick={(e) => {
-              e.preventDefault();
-              toggleStarted();
-              if (!isSignUp) toggleSignUp()
-            }}
+            onClick={handlePremiumClicked}
           >
-            Sign up
+            {cta}
           </a>
         </div>
       </div>
