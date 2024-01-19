@@ -34,7 +34,7 @@ const SignInForm = ({ toggleSignUp, loginSuccess, setLoginSuccess }: Props) => {
     mode: "onChange",
   });
   const clientLogin = rootStore(({ handleClientLogin }) => handleClientLogin);
-  const toggleStarted = rootStore(({ toggleStarted }) => toggleStarted);
+  // const toggleStarted = rootStore(({ toggleStarted }) => toggleStarted);
 
   // states
   const [logging, setLogging] = useState(false);
