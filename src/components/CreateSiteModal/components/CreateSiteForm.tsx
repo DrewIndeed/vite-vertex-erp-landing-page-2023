@@ -8,10 +8,6 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ConfigSiteResponse } from 'types/auth.request';
 
-type Props = {
-  toggleConfigSite: () => void;
-};
-
 async function createSite(siteName: string, sitePassword: string) {
   const response: AxiosResponse = await serverFetcher.get(
     `?siteName=${siteName}&sitePassword=${sitePassword}`
@@ -22,7 +18,7 @@ async function createSite(siteName: string, sitePassword: string) {
   }
 }
 
-const CreateSiteForm = ({ toggleConfigSite }: Props) => {
+const CreateSiteForm = () => {
   const tk = rootStore(({ data }) => data.tk);
 
   const { register, handleSubmit } = useForm({
