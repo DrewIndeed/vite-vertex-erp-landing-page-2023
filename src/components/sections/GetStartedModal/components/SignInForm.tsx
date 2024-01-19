@@ -39,6 +39,7 @@ const SignInForm = ({ toggleSignUp, loginSuccess, setLoginSuccess }: Props) => {
   // states
   const [logging, setLogging] = useState(false);
   const [hasDomain, setHasDomain] = useState(false);
+  const [isExpiredPlan, setIsExpiredPlan] = useState(false);
 
   // methods
   const onSubmit = async (data: Record<string, string>) => {
@@ -58,6 +59,19 @@ const SignInForm = ({ toggleSignUp, loginSuccess, setLoginSuccess }: Props) => {
         clientLogin(response.token);
         setLoginSuccess(true)
 
+
+        if (response.isExpired) {
+          setTimeout(() => {
+            _resetting()
+            // msg
+            enqueueSnackbar(`Your plan has expired. Please choose a plan to continue`, {
+              variant: "warning",
+            });
+          }, 200);
+          setIsExpiredPlan(true)
+          return;
+        }
+
         // is user has not chosen plan
         if (response.domain === null) {
           setTimeout(() => {
@@ -72,6 +86,8 @@ const SignInForm = ({ toggleSignUp, loginSuccess, setLoginSuccess }: Props) => {
           // OR navigate to plans section so that users can pick
           return;
         }
+
+        
 
         // if user has chosen plan
         setHasDomain(true)
@@ -237,7 +253,7 @@ const SignInForm = ({ toggleSignUp, loginSuccess, setLoginSuccess }: Props) => {
         </span>
       </div>}
       {loginSuccess && !hasDomain && <div className="w-full h-auto relative flex flex-col items-center justify-center">
-        <Pricing isInModal />
+        <Pricing isInModal isExpiredPlan={isExpiredPlan}/>
       </div>}
     </div>
   );
