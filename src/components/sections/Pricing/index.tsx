@@ -112,7 +112,7 @@ const Pricing = ({ isInModal, isExpiredPlan }: Props) => {
             <span className='mt-7 font-bold text-5xl text-gray-800 dark:text-yellow-400'>
               Free
             </span>
-            <p className='mt-2 text-sm text-gray-500'>Forever free</p>
+            <p className='mt-2 text-sm text-gray-500'>Trial up to 14 days</p>
 
             <ul className='mt-7 space-y-2.5 text-sm'>
               <li className='flex space-x-2'>
@@ -130,7 +130,7 @@ const Pricing = ({ isInModal, isExpiredPlan }: Props) => {
               <li className='flex space-x-2'>
                 <TickMark />
                 <span className='text-gray-800 dark:text-gray-400'>
-                  Product support
+                  Normal Product support
                 </span>
               </li>
             </ul>
@@ -223,7 +223,7 @@ const Pricing = ({ isInModal, isExpiredPlan }: Props) => {
                 <polyline points='20 6 9 17 4 12' />
               </svg>
               <span className='text-gray-800 dark:text-gray-400'>
-                Product support
+                Fast Product support
               </span>
             </li>
           </ul>
