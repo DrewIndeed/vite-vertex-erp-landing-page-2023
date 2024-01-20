@@ -40,7 +40,7 @@ async function registerTrial(tk: string) {
     );
     if (response.status === 200) {
       console.log(response);
-      enqueueSnackbar('Trial registered successfully', {
+      enqueueSnackbar('Trial registered successfully! Please enter your site infos', {
         variant: 'success',
       });
       return true;
@@ -57,32 +57,32 @@ const Pricing = ({ isInModal, isExpiredPlan }: Props) => {
   const toggleStarted = rootStore(({ toggleStarted }) => toggleStarted);
   const toggleSignUp = rootStore(({ toggleSignUp }) => toggleSignUp);
   const togglePayment = rootStore(({ togglePayment }) => togglePayment);
+  const toggleConfigSite = rootStore(({ toggleConfigSite }) => toggleConfigSite);
 
-  const mainTitle = isInModal ? 'Choose you plan' : 'Pricing';
+  const mainTitle = isInModal ? 'Choose your plan' : 'Pricing';
   const cta = isInModal ? 'I Want This' : 'Sign Up';
 
-  const commonOnClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
+  const commonOnClick = () => {
     toggleStarted();
     if (!isSignUp) toggleSignUp();
   };
   const handleFreeClicked = async (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (!isInModal) commonOnClick(e);
-
     e.preventDefault();
+    if (!isInModal) {
+      commonOnClick();
+      return;
+    }
     await registerTrial(tk);
-    toggleStarted();
-    // toggleConfigSite();
+    toggleConfigSite();
   };
   const handlePremiumClicked = async (
-    e: React.MouseEvent<HTMLAnchorElement>
+    e: React.MouseEvent<HTMLAnchorElement> 
   ) => {
-    if (!isInModal) commonOnClick(e);
-
     e.preventDefault();
-    // await registerPremium(tk);
-    // toggleStarted();
-    // toggleConfigSite();
+    if (!isInModal) {
+      commonOnClick();
+      return;
+    }
     togglePayment();
   };
   return (
