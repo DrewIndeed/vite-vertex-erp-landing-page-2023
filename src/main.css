@@ -103,3 +103,12 @@ a:not([class]) {
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
+.no-scrollbar {
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+.no-scrollbar::-webkit-scrollbar { /* WebKit */
+  width: 0;
+  height: 0;
+}

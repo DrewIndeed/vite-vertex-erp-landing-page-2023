@@ -76,7 +76,7 @@ const Pricing = ({ isInModal, isExpiredPlan }: Props) => {
     toggleConfigSite();
   };
   const handlePremiumClicked = async (
-    e: React.MouseEvent<HTMLAnchorElement> 
+    e: React.MouseEvent<HTMLAnchorElement>
   ) => {
     e.preventDefault();
     if (!isInModal) {
@@ -87,7 +87,7 @@ const Pricing = ({ isInModal, isExpiredPlan }: Props) => {
   };
   return (
     <div
-      className='max-w-[42rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto'
+      className='max-w-[42rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto h-screen overflow-y-auto no-scrollbar'
       id='pricing'
     >
       <div className='max-w-2xl mx-auto text-center mb-10 lg:mb-14'>
