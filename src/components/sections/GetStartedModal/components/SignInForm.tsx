@@ -117,7 +117,7 @@ const SignInForm = ({ toggleSignUp, loginSuccess, setLoginSuccess }: Props) => {
 
   return (
     <div
-      className={cn("w-full mx-4 lg:mx-0 mt-7 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700 md:max-w-[450px]", loginSuccess && !hasDomain && "md:max-w-max")}
+      className={cn("w-full mx-4 my-4 lg:mx-0 lg:mt-7 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700 md:max-w-[450px]", loginSuccess && !hasDomain && "md:max-w-max")}
     >
       {!loginSuccess && <div className="p-4 sm:p-7">
         <h1 className="block text-2xl font-bold text-gray-800 dark:text-white text-center">
