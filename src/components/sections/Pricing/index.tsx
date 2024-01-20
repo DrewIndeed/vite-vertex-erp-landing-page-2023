@@ -72,6 +72,9 @@ const Pricing = ({ isInModal, isExpiredPlan }: Props) => {
       commonOnClick();
       return;
     }
+    enqueueSnackbar(`Registering for a trial plan...`, {
+      variant: "info",
+    });
     await registerTrial(tk);
     toggleConfigSite();
   };
@@ -83,6 +86,9 @@ const Pricing = ({ isInModal, isExpiredPlan }: Props) => {
       commonOnClick();
       return;
     }
+    enqueueSnackbar(`Proceeding to payment...`, {
+      variant: "info",
+    });
     togglePayment();
   };
   return (
