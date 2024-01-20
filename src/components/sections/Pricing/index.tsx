@@ -1,5 +1,6 @@
 import { ENDPOINTS, fetcher } from '@api/useAxiosSWR';
 import { rootStore } from '@store/index';
+import { cn } from '@utils/index';
 import { enqueueSnackbar } from 'notistack';
 import {
   RegisterTrialResponse
@@ -109,7 +110,7 @@ const Pricing = ({ isInModal, isExpiredPlan }: Props) => {
         }
       </div>
 
-      <div className='mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 lg:items-center'>
+      <div className={cn('mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 lg:items-center', { "md:grid-cols-1": isExpiredPlan })}>
         {!isExpiredPlan && (
           <div className='flex flex-col border border-gray-200 text-center rounded-xl p-8 dark:border-gray-700'>
             <h4 className='font-medium text-lg text-gray-800 dark:text-gray-200'>
